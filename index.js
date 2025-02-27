@@ -82,6 +82,15 @@ app.patch("/jokes/:id", (req, res) => {
 
 //7. DELETE Specific joke
 
+app.delete("/jokes/:id", (req, res) => {
+  const id = parseInt(req.params.id);
+  const remainJokes = jokes.filter((joke) => joke.id !== id);
+  console.log(remainJokes);
+  jokes = remainJokes;
+  console.log(jokes);
+  res.json(jokes);
+})
+
 //8. DELETE All jokes
 
 app.listen(port, () => {
